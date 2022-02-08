@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <ncurses.h>
+//#include <ncurses.h>
 #include <math.h>
 #include <string.h>
 
@@ -173,9 +173,6 @@ char* firstnames[] = {
     "Mihály"
 };
 
-//asdf
-
-#define FACCOPOO
 
 struct Likes {
     ulong          topics;
