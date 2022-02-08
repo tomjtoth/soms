@@ -173,6 +173,9 @@ char* firstnames[] = {
     "Mihály"
 };
 
+//asdf
+
+#define FACCOPOO
 
 struct Likes {
     ulong          topics;
