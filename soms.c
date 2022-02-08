@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-//#include <ncurses.h>
+#include <ncurses.h>
 #include <math.h>
 #include <string.h>
 
@@ -272,6 +272,7 @@ void load_level(const char* level, char *map[LEVEL_HEIGHT][LEVEL_WIDTH]) {
         #endif
 
         while ((line = strsep(&buffer, "\n")) != NULL) {
+            char *line_original = line;
             while ((cell = strsep(&line, ",")) != NULL) {
                 if (j == 0 && strcmp(cell, "##map starts below##") == 0) {
                     #ifdef DEBUG
@@ -291,6 +292,7 @@ void load_level(const char* level, char *map[LEVEL_HEIGHT][LEVEL_WIDTH]) {
             }
             i++;
             j=0;
+            free(line_original);
         }
         free(line);
         free(cell);
