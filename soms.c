@@ -262,8 +262,9 @@ void load_level(const char* level, char *map[LEVEL_HEIGHT][LEVEL_WIDTH]) {
     }
 
     if (buffer) {
-        char *line = NULL, 
-             *cell = NULL;
+        char *original_buffer = buffer,
+                        *line = NULL,
+                        *cell = NULL;
         int i = 0, 
             j = 0;
 
@@ -272,7 +273,6 @@ void load_level(const char* level, char *map[LEVEL_HEIGHT][LEVEL_WIDTH]) {
         #endif
 
         while ((line = strsep(&buffer, "\n")) != NULL) {
-            char *line_original = line;
             while ((cell = strsep(&line, ",")) != NULL) {
                 if (j == 0 && strcmp(cell, "##map starts below##") == 0) {
                     #ifdef DEBUG
@@ -282,21 +282,17 @@ void load_level(const char* level, char *map[LEVEL_HEIGHT][LEVEL_WIDTH]) {
                     i = 0;
                     continue;
                 }
-                //if (j>100) //reallocate to 2x size
+                //if (j>100) //TODO: reallocate to 2x size
                 if (cell) map[i][j] = cell;
                 #ifdef DEBUG
                     printf("cell(%d,%d) = %s\n", i, j, cell);
                 #endif
                 j++;
-                //free(cell);
             }
             i++;
             j=0;
-            free(line_original);
         }
-        free(line);
-        free(cell);
-        free(buffer);
+        free(original_buffer);
     }
 }
 
