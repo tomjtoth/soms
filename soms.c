@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-//#include <ncurses.h>
+#include <ncurses.h>
 #include <math.h>
 #include <string.h>
 
@@ -262,8 +262,9 @@ void load_level(const char* level, char *map[LEVEL_HEIGHT][LEVEL_WIDTH]) {
     }
 
     if (buffer) {
-        char *line = NULL, 
-             *cell = NULL;
+        char *original_buffer = buffer,
+                        *line = NULL,
+                        *cell = NULL;
         int i = 0, 
             j = 0;
 
@@ -281,20 +282,17 @@ void load_level(const char* level, char *map[LEVEL_HEIGHT][LEVEL_WIDTH]) {
                     i = 0;
                     continue;
                 }
-                //if (j>100) //reallocate to 2x size
+                //if (j>100) //TODO: reallocate to 2x size
                 if (cell) map[i][j] = cell;
                 #ifdef DEBUG
                     printf("cell(%d,%d) = %s\n", i, j, cell);
                 #endif
                 j++;
-                //free(cell);
             }
             i++;
             j=0;
         }
-        free(line);
-        free(cell);
-        free(buffer);
+        free(original_buffer);
     }
 }
 
