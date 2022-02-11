@@ -1,3 +1,9 @@
+#define MAX_SOMS                     100
+#define LEVEL_WIDTH                  100
+#define LEVEL_HEIGHT                 100
+
+
+
 #define TOPIC_ALIENS                 (ulong)pow(2,  0)
 #define TOPIC_MOVIES                 (ulong)pow(2,  1)
 #define TOPIC_GAMING                 (ulong)pow(2,  2)
@@ -131,8 +137,3 @@
 #define GENDER_CIS_FEMALE            (ulong)pow(2, 0)
 #define GENDER_CIS_MALE              (ulong)pow(2, 1)
 #define GENDER_OTHER                 (ulong)pow(2, 2)
-
-
-#define MAX_SOMS                     100
-#define LEVEL_WIDTH                  100
-#define LEVEL_HEIGHT                 100
